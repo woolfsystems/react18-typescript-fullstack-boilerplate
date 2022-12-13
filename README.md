@@ -1,3 +1,4 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/woolfsystems/react18-typescript-fullstack-boilerplate/playwright)
 # React 18 Typescript Fullstack Boilerplate
 
 To build the docker file and tag it as, for example `boilerplate`, you would enter the following at your terminal:
