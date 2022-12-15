@@ -6,11 +6,8 @@
   "scripts": {
     "test": "playwright test",
     "clean": "rimraf dist",
-    "build": "npm run clean && npm run build:all",
-    "build:all": "npm run build:server && npm run build:client",
-    "build:server": "cd src/server/ && esbuild --bundle ./index.ts --outdir=../../dist --platform=node",
-    "build:client": "cd src/client/ && esbuild --bundle ./index.tsx --outdir=../../dist/public --minify --sourcemap --define:process.env.NODE_ENV=\\\"production\\\" && copyfiles public/* ../../dist/",
-    "dev:client": "npm start & cd src/client/ && esbuild --watch --bundle ./index.tsx --outdir=../../dist/public --minify --sourcemap=inline --define:process.env.NODE_ENV=\\\"production\\\" && copyfiles public/* ../../dist/",
+    "build": "npm run clean && golem build && copyfiles -u 2 src/client/public/* dist/",
+    "watch": "npm run clean && copyfiles -u 2 src/client/public/* dist/ && golem watch",
     "start": "node -r dotenv/config .",
     "build:docker": "docker build . -t boilerplate:latest",
     "coverage": "istanbul report --root ./coverage"
@@ -19,7 +16,6 @@
   "author": "Tristram Woolf",
   "license": "ISC",
   "dependencies": {
-    "@fnord/golem": "^0.2.1",
     "@tremor/react": "^1.2.2",
     "date-fns": "^2.29.3",
     "dotenv": "^10.0.0",
@@ -32,6 +28,7 @@
     "react-error-boundary": "^3.1.4"
   },
   "devDependencies": {
+    "@fnord/golem": "^0.2.2",
     "@playwright/test": "^1.28.1",
     "@types/cli-color": "^2.0.2",
     "@types/express": "^4.17.14",
