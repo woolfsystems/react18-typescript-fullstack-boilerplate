@@ -34,7 +34,7 @@ app.use('/api',apiRouter())
 app.use(errorHandler)
 
 const server = app.listen(port,()=>{
-  console.log('[EXP]',`available at http://localhost:${port}`)
+  console.log('[EXP]',`available on http://localhost:${port}`)
 })
 
 async function gracefullyExitProcess() {
